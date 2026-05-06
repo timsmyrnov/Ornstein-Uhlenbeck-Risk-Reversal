@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ou-skew-scanner"
+version = "0.1.0"
+description = "Estimate Ornstein-Uhlenbeck mean reversion in equity option implied-volatility skew features."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "Your Name"}
+]
+keywords = ["options", "volatility", "skew", "ornstein-uhlenbeck", "quant", "derivatives"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Office/Business :: Financial :: Investment"
+]
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "scipy>=1.10",
+  "matplotlib>=3.7",
+  "PyYAML>=6.0"
+]
+
+[project.optional-dependencies]
+yfinance = ["yfinance>=0.2.40"]
+wrds = ["wrds>=3.2.0"]
+dev = ["pytest>=7.4", "ruff>=0.5", "mypy>=1.8", "yfinance>=0.2.40"]
+
+[project.scripts]
+ou-skew = "ou_skew.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]

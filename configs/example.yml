@@ -1,0 +1,16 @@
+input_csv: data/sample_option_chains.csv
+output_dir: reports
+tickers:
+  - AAPL
+  - MSFT
+skew:
+  target_tenor_days: 30
+  call_delta: 0.25
+  put_delta: -0.25
+  skew_definition: put_minus_call
+  min_volume: 0
+  min_open_interest: 0
+ou:
+  lookback_days: 252
+  trading_days_per_year: 252
+  forecast_horizon_days: 30
